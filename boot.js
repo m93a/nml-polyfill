@@ -1,4 +1,6 @@
-(function(){
+window.addEventListener('load',function(){
+
+document.documentElement.innerHTML = "";
 
 window.query = {};
 
@@ -21,15 +23,34 @@ request.overrideMimeType('text/plain');
 request.send();
 
 var nmldoc = new NMLDocument();
-nmldoc.parse(request.responseText);
-nmldoc = nmldoc.toDOM();
 
-window.addEventListener('load',function(){
- document.head.innerHTML = nmldoc.head.innerHTML;
- document.body.innerHTML = nmldoc.body.innerHTML;
+nmldoc.observe('add',function(e){
+ var node;
+ if(e.parent == nmldoc){
+  e.target.domequiv = document.documentElement;
+  for(attr in e.target.attrs){
+   document.documentElement
+    .setAttribute(attr, e.target.attrs[attr]);
+  }
+ }else if(e.target.tag){
+  node = document.createElementNS(
+   e.target.getNamespace(),
+   e.target.tag.name
+  );
+  for(attr in e.target.attrs){
+   node.setAttribute(attr, e.target.attrs[attr]);
+  }
+  e.target.domequiv = node;
+  e.parent.domequiv.appendChild(node);
+ }else{
+  node = new Text(e.target);
+  e.parent.domequiv.appendChild(node);
+ }
 });
+
+nmldoc.parse(request.responseText);
 
 window.nmldoc = nmldoc;
 
 
-})();
+});

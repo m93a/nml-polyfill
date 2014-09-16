@@ -1,0 +1,10 @@
+@namespace url("/nml");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+html|html,
+html|body{
+ padding:   0;
+ margin:    0;
+ height: 100%;
+ width:  100%;
+}
