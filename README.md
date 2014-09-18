@@ -1,4 +1,5 @@
 #HTML6 polyfill
+Beta - ready for download and test!
 
 ## How to install
  0. Clone the repository
