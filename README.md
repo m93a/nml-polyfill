@@ -15,3 +15,5 @@
  3. Scripts are imported using `<html:link rel=stylesheet href=... />`
  4. In css use `[data-nml-tag="foo"]` for selecting `<foo>` element (will be fixed in the future)
  5. In your styles use [`@namespace` at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@namespace)
+ 6. You can make your custom elements with custom attributes with whatever value
+  * There can't be more elements with the same value of the `id` attribute, only the first elements value will be accepted

@@ -1,14 +1,20 @@
 <!doctype html form>
 <html:html>
+ 
  <html:head>
   <html:meta charset=utf-8 />
   <html:title>Ahoj</html:title>
   <html:link rel=stylesheet href=content/style.css />
   <html:link rel=script href=content/script.js />
  </html:head>
+ 
  <html:body>
   Yay, it <body>works</body>.
   <a href=foo>E</a><html:a href=foo>ven</html:a> for <my>custom tags</my>!
   <html:media type=img src=content/nyan.gif />
+  <html:media type=audio controls>
+   <html:source type=audio/mpeg src=content/sound.mp3 />
+  </html:media>
  </html:body>
+ 
 </html:html>
